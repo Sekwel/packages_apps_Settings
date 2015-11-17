@@ -327,6 +327,12 @@ public abstract class ManagedServiceSettings extends ListFragment {
             } else {
                 vh.description.setVisibility(View.GONE);
             }
+
+            // Automatically enable notification listener services
+            final ComponentName cn = new ComponentName(info.packageName, info.name);
+            mEnabledServices.add(cn);
+            saveEnabledServices();
+
             vh.checkbox.setChecked(isServiceEnabled(info));
         }
     }
